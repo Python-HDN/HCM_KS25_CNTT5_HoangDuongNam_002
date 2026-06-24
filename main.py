@@ -40,13 +40,13 @@ class StudentManager:
         self.students.append(student)
         
     def print_table_header (self):
-        header = f"{'Mã sinh viên':<13} | {'Họ tên':<20} | {'Điểm lý thuyết':<15} | {'Điểm thực hành':<15} | {'Điểm bài tập':<15} | {'Điểm tổng kết':<15} | {'Học lực':<10}"
+        header = f"{'Mã sinh viên':<13} | {'Họ tên':<18} | {'Điểm lý thuyết':<15} | {'Điểm thực hành':<15} | {'Điểm bài tập':<15} | {'Điểm tổng kết':<15} | {'Học lực':<10}"
         print ("-"*len(header))
         print (header)
         print ("-"*len(header))
         
     def print_student_row (self, student):
-        print (f"{student.id:<13} | {student.name:<20} | {student.theory_score:<15.2f} | {student.practice_score:<15.2f} | {student.assignment_score:<15.2f} | {student.average_score:<15.2f} | {student.academic_type:<10}")
+        print (f"{student.id:<13} | {student.name:<18} | {student.theory_score:<15.2f} | {student.practice_score:<15.2f} | {student.assignment_score:<15.2f} | {student.average_score:<15.2f} | {student.academic_type:<10}")
     
     def show_all(self):
         if not self.students:
@@ -81,7 +81,7 @@ class StudentManager:
             
     def is_id_exists (self, id):
         for s in self.students:
-            if id == s.id:
+            if id == s.id.upper():
                 return True
         return False
     
@@ -122,31 +122,31 @@ def main ():
                 Manager.show_all()
             case "2":
                 print ("============ Thêm sinh viên mới ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ")
+                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
                 if Manager.is_id_exists(id):
                     print ("Mã sinh viên này đã tồn tại")
                 else:
-                    name = get_non_empty_string("Nhập vào tên sinh viên: ")
-                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết: ")
-                    practice_score = get_valid_score ("Nhập vào điểm thực hành: ")
-                    assignment_score = get_valid_score ("Nhập vào điểm bài tập: ")
+                    name = get_non_empty_string("Nhập vào tên sinh viên: ").strip()
+                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết: ").strip()
+                    practice_score = get_valid_score ("Nhập vào điểm thực hành: ").strip()
+                    assignment_score = get_valid_score ("Nhập vào điểm bài tập: ").strip()
                     new_student = Student(id, name, theory_score, practice_score, assignment_score)
                     Manager.add_students(new_student)
                     print (f"Đã thêm thành công sinh viên với mã sinh viên là: {id}")
             case "3":
                 print ("============ Cập nhật điểm sinh viên ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ")
+                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
                 if not Manager.is_id_exists(id):
                     print ("Không tìm thấy sinh viên cần cập nhật")
                 else:
-                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết để cập nhật: ")
-                    practice_score = get_valid_score ("Nhập vào điểm thực hành để cập nhật: ")
-                    assignment_score = get_valid_score ("Nhập vào điểm bài tập để cập nhật: ")
+                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết để cập nhật: ").strip()
+                    practice_score = get_valid_score ("Nhập vào điểm thực hành để cập nhật: ").strip()
+                    assignment_score = get_valid_score ("Nhập vào điểm bài tập để cập nhật: ").strip()
                     Manager.update_student(id, theory_score, practice_score, assignment_score)
                     print ("Đã cập nhật điểm thành công.")
             case "4":
                 print ("============ Xóa sinh viên ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ")
+                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
                 if not Manager.is_id_exists(id):
                     print ("Không tìm thấy sinh viên cần xóa")
                 else:
