@@ -123,20 +123,20 @@ def main ():
                 Manager.show_all()
             case "2":
                 print ("============ Thêm sinh viên mới ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
+                id = get_non_empty_string("Nhập vào mã sinh viên cần thêm: ").upper().strip()
                 if Manager.is_id_exists(id):
                     print ("Mã sinh viên này đã tồn tại")
                 else:
-                    name = get_non_empty_string("Nhập vào tên sinh viên: ").strip()
-                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết: ")
-                    practice_score = get_valid_score ("Nhập vào điểm thực hành: ")
-                    assignment_score = get_valid_score ("Nhập vào điểm bài tập: ")
+                    name = get_non_empty_string("Nhập vào tên sinh viên cần thêm: ").strip()
+                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết cần thêm: ")
+                    practice_score = get_valid_score ("Nhập vào điểm thực hành cần thêm: ")
+                    assignment_score = get_valid_score ("Nhập vào điểm bài tập cần thêm: ")
                     new_student = Student(id, name, theory_score, practice_score, assignment_score)
                     Manager.add_students(new_student)
                     print (f"Đã thêm thành công sinh viên với mã sinh viên là: {id}")
             case "3":
                 print ("============ Cập nhật điểm sinh viên ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
+                id = get_non_empty_string("Nhập vào mã sinh viên cần cập nhật: ").upper().strip()
                 if not Manager.is_id_exists(id):
                     print ("Không tìm thấy sinh viên cần cập nhật")
                 else:
@@ -147,7 +147,7 @@ def main ():
                     print ("Đã cập nhật điểm thành công.")
             case "4":
                 print ("============ Xóa sinh viên ============")
-                id = get_non_empty_string("Nhập vào mã sinh viên: ").upper().strip()
+                id = get_non_empty_string("Nhập vào mã sinh viên cần xóa: ").upper().strip()
                 if not Manager.is_id_exists(id):
                     print ("Không tìm thấy sinh viên cần xóa")
                 else:
