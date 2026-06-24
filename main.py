@@ -73,7 +73,7 @@ class StudentManager:
     def search_student (self, name):
         results = [s for s in self.students if name.lower() in s.name.lower()]
         if not results:
-            print (f"Không có sinh viên nào có tên {name}")
+            print (f"Không tìm thấy sinh viên phù hợp. Có tên {name}")
             return
         self.print_table_header()
         for s in results:
@@ -149,14 +149,14 @@ def main ():
                 print ("============ Xóa sinh viên ============")
                 id = get_non_empty_string("Nhập vào mã sinh viên cần xóa: ").upper().strip()
                 if not Manager.is_id_exists(id):
-                    print ("Không tìm thấy sinh viên cần xóa")
+                    print ("Không tìm thấy sinh viên cần xóa!")
                 else:
                     while True:
                         choice = input(f"Bạn có chắc muốn xóa sinh viên có mã {id} này không? (Y/N): ").upper()
                         if choice in ["Y", "N"]:
                             if choice == "Y":
                                 Manager.delete_student(id)
-                                print ("Đã xóa thành công")
+                                print ("Xóa sinh viên thành công!")
                                 break
                             else:
                                 print ("Đã hủy thao tác xóa")
