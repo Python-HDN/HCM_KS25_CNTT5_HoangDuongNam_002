@@ -7,7 +7,6 @@ class Student:
         self.assignment_score = assignment_score
         self.average_score = 0.0
         self.academic_type = ""
-
         self.calculate_average()
         self.classify_academic()
         
@@ -31,7 +30,8 @@ class Student:
         self.assignment_score = assignment_score
         self.calculate_average()
         self.classify_academic()
-        
+
+header =  f"{'Mã sinh viên':<13} | {'Họ tên':<18} | {'Điểm lý thuyết':<15} | {'Điểm thực hành':<15} | {'Điểm bài tập':<15} | {'Điểm tổng kết':<15} | {'Học lực':<10}"  
 class StudentManager:
     def __init__(self):
         self.students = []
@@ -40,14 +40,14 @@ class StudentManager:
         self.students.append(student)
         
     def print_table_header (self):
-        header = f"{'Mã sinh viên':<13} | {'Họ tên':<18} | {'Điểm lý thuyết':<15} | {'Điểm thực hành':<15} | {'Điểm bài tập':<15} | {'Điểm tổng kết':<15} | {'Học lực':<10}"
+
         print ("-"*len(header))
         print (header)
         print ("-"*len(header))
         
     def print_student_row (self, student):
         print (f"{student.id:<13} | {student.name:<18} | {student.theory_score:<15.2f} | {student.practice_score:<15.2f} | {student.assignment_score:<15.2f} | {student.average_score:<15.2f} | {student.academic_type:<10}")
-    
+        print ("-"*len(header))
     def show_all(self):
         if not self.students:
             print ("Không có sinh viên nào trong danh sách")
