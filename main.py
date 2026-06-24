@@ -89,11 +89,7 @@ class StudentManager:
             
     # Hàm bổ trợ để kiểm tra id có tồn tại hay không
     def is_id_exists (self, id):
-        for s in self.students:
-            if id == s.id.upper():
-                return True
-        return False
-    
+        return any(s.id.upper() == id for s in self.students)
     
 # Hàm bổ trợ để kiểm tra có để trống thông tin hay không
 def get_non_empty_string (prompt):
