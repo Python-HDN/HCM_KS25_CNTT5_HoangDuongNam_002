@@ -90,6 +90,7 @@ def get_non_empty_string (prompt):
         value = input (prompt)
         if not value:
             print ("Không được để trống")
+            continue
         return value
         
 def get_valid_score (prompt):
@@ -127,9 +128,9 @@ def main ():
                     print ("Mã sinh viên này đã tồn tại")
                 else:
                     name = get_non_empty_string("Nhập vào tên sinh viên: ").strip()
-                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết: ").strip()
-                    practice_score = get_valid_score ("Nhập vào điểm thực hành: ").strip()
-                    assignment_score = get_valid_score ("Nhập vào điểm bài tập: ").strip()
+                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết: ")
+                    practice_score = get_valid_score ("Nhập vào điểm thực hành: ")
+                    assignment_score = get_valid_score ("Nhập vào điểm bài tập: ")
                     new_student = Student(id, name, theory_score, practice_score, assignment_score)
                     Manager.add_students(new_student)
                     print (f"Đã thêm thành công sinh viên với mã sinh viên là: {id}")
@@ -139,9 +140,9 @@ def main ():
                 if not Manager.is_id_exists(id):
                     print ("Không tìm thấy sinh viên cần cập nhật")
                 else:
-                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết để cập nhật: ").strip()
-                    practice_score = get_valid_score ("Nhập vào điểm thực hành để cập nhật: ").strip()
-                    assignment_score = get_valid_score ("Nhập vào điểm bài tập để cập nhật: ").strip()
+                    theory_score = get_valid_score ("Nhập vào điểm lý thuyết để cập nhật: ")
+                    practice_score = get_valid_score ("Nhập vào điểm thực hành để cập nhật: ")
+                    assignment_score = get_valid_score ("Nhập vào điểm bài tập để cập nhật: ")
                     Manager.update_student(id, theory_score, practice_score, assignment_score)
                     print ("Đã cập nhật điểm thành công.")
             case "4":
